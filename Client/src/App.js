@@ -1,33 +1,35 @@
-import React, { useState,useRef } from "react";
-import logo from "./logo.svg";
-import "./App.css";
-import HomeScreen from "../src/Screens/HomeScreen";
-import Explore from "../src/Screens/Explore";
-import AboutUs from "../src/Screens/AboutUs";
-import Login from '../src/Screens/Login/Login'
+import React, { useState, useRef } from 'react';
+import logo from './logo.svg';
+import './App.css';
+import HomeScreen from './Screens/HomeScreen';
+import Explore from './Screens/Explore';
+import AboutUs from './Screens/AboutUs';
+import Login from './Screens/Login/Login';
 function App() {
   const address = {
-    home: "Home",
-    explore: "Explore",
-    aboutus: "About us",
+    home: 'Home',
+    explore: 'Explore',
+    aboutus: 'About us',
   };
   const [Navigate, setNavigate] = useState(address.home);
-  const HomeRef = useRef()
-  const ExploreRef = useRef()
-  const AboutUsRef = useRef()
-  const LoginRef = useRef()
-  const RentalApp = ({screen}) => { 
+  const HomeRef = useRef();
+  const ExploreRef = useRef();
+  const AboutUsRef = useRef();
+  const LoginRef = useRef();
+  const RentalApp = ({ screen }) => {
     switch (screen) {
       case address.home:
-        return <HomeScreen />
+        return <HomeScreen />;
       case address.explore:
-        return <Explore />
-    
+        return <Explore />;
+
       default:
-      return <HomeScreen />
+        return <HomeScreen />;
     }
-   }
-   const scroll = (ref) => { ref.current.scrollIntoView({behavior:'smooth'}) }
+  };
+  const scroll = ref => {
+    ref.current.scrollIntoView({ behavior: 'smooth' });
+  };
   return (
     <>
       <div className='home'>
@@ -37,15 +39,13 @@ function App() {
           <button onClick={() => scroll(AboutUsRef)}>About us</button>
           <button onClick={() => scroll(LoginRef)}>Login</button>
           <button className='call'>Call</button>
-      
         </div>
         <HomeScreen />
-
       </div>
       {/* <RentalApp screen={Navigate}/> */}
-      <Explore propref={ExploreRef}/>
-      <AboutUs propref={AboutUsRef}/>
-      <Login propref={LoginRef}/>
+      <Explore propref={ExploreRef} />
+      <AboutUs propref={AboutUsRef} />
+      <Login propref={LoginRef} />
     </>
   );
 }

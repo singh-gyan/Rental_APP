@@ -7,11 +7,12 @@ function Login(props) {
   const [signup, setsignup] = useState(null);
   const [message, setMessage] = useState('');
   useEffect(() => {
-    postLogin(login).then(res => setMessage(res));
-  }, [login]);
-  useEffect(() => {
-    postSignup(signup).then(res => setMessage(res));
+    if (signup) postSignup(signup).then(res => setMessage(res));
   }, [signup]);
+
+  useEffect(() => {
+    if (login) postLogin(login).then(res => setMessage(res));
+  }, [login]);
 
   const postLogin = async login => {
     const res = await fetch('/login', {
@@ -33,7 +34,8 @@ function Login(props) {
       },
     });
     const res = await getUsers.json();
-    console.log(res);
+    setMessage(res);
+    return;
   };
   const postSignup = async signup => {
     const res = await fetch('/signup', {
