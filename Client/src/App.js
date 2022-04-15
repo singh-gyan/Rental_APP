@@ -4,7 +4,7 @@ import "./App.css";
 import HomeScreen from "../src/Screens/HomeScreen";
 import Explore from "../src/Screens/Explore";
 import AboutUs from "../src/Screens/AboutUs";
-
+import Login from '../src/Screens/Login/Login'
 function App() {
   const address = {
     home: "Home",
@@ -15,6 +15,7 @@ function App() {
   const HomeRef = useRef()
   const ExploreRef = useRef()
   const AboutUsRef = useRef()
+  const LoginRef = useRef()
   const RentalApp = ({screen}) => { 
     switch (screen) {
       case address.home:
@@ -34,7 +35,7 @@ function App() {
           <button onClick={() => scroll(HomeRef)}>Logo</button>
           <button onClick={() => scroll(ExploreRef)}>Explore</button>
           <button onClick={() => scroll(AboutUsRef)}>About us</button>
-          <button>Cities</button>
+          <button onClick={() => scroll(LoginRef)}>Login</button>
           <button className='call'>Call</button>
       
         </div>
@@ -44,6 +45,7 @@ function App() {
       {/* <RentalApp screen={Navigate}/> */}
       <Explore propref={ExploreRef}/>
       <AboutUs propref={AboutUsRef}/>
+      <Login propref={LoginRef}/>
     </>
   );
 }
